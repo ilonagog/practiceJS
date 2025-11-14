@@ -500,3 +500,163 @@
 // }
 // return [aliceScore, bobScore]
 // }
+
+// 1.Write code that enhances all arrays such that you can call the array.last() method on any array and it will return the last element. If there are no elements in the array, it should return -1.
+
+// You may assume the array is the output of JSON.parse.
+
+// Example 1:
+
+// Input: nums = [null, {}, 3]
+// Output: 3
+// Explanation: Calling nums.last() should return the last element: 3.
+// Example 2:
+
+// Input: nums = []
+// Output: -1
+// Explanation: Because there are no elements, return -1.
+
+// Constraints:
+
+// arr is a valid JSON array
+// 0 <= arr.length <= 1000
+// Answer
+// Array.prototype.last = function() {
+//     if(this.length > 0){
+//         return this[this.length -1];
+//     }else{
+//         return -1;
+//     }
+// };
+
+//   const arr = [1, 2, 3];
+//   arr.last(); // 3
+//  const nums1 = [null, {}, 3];
+// console.log(nums1.last());
+
+// 2.Given an integer n, return a counter function. This counter function initially returns n and then returns 1 more than the previous value every subsequent time it is called (n, n + 1, n + 2, etc).
+
+// Example 1:
+
+// Input:
+// n = 10
+// ["call","call","call"]
+// Output: [10,11,12]
+// Explanation:
+// counter() = 10 // The first time counter() is called, it returns n.
+// counter() = 11 // Returns 1 more than the previous time.
+// counter() = 12 // Returns 1 more than the previous time.
+// Example 2:
+
+// Input:
+// n = -2
+// ["call","call","call","call","call"]
+// Output: [-2,-1,0,1,2]
+// Explanation: counter() initially returns -2. Then increases after each sebsequent call.
+
+// Answer:
+// /**
+//  * @param {number} n
+//  * @return {Function} counter
+//  */
+//  var createCounter = function(n) {
+//     let counter = n;
+//     const counterFunction = function(){
+//         return counter++;
+//     };
+//     return counterFunction;
+// };
+
+// /**
+//  * const counter = createCounter(10)
+//  * counter() // 10
+//  * counter() // 11
+//  * counter() // 12
+//  */
+
+// Given a positive integer millis, write an asynchronous function that sleeps for millis milliseconds. It can resolve any value.
+
+// Example 1:
+
+// Input: millis = 100
+// Output: 100
+// Explanation: It should return a promise that resolves after 100ms.
+// let t = Date.now();
+// sleep(100).then(() => {
+//   console.log(Date.now() - t); // 100
+// });
+// Example 2:
+
+// Input: millis = 200
+// Output: 200
+// Explanation: It should return a promise that resolves after 200ms.
+
+// Answer:
+// /**
+//  * @param {number} millis
+//  * @return {Promise}
+//  */
+//  async function sleep(millis) {
+//     return new Promise(resolve =>{
+//         setTimeout(()=>{
+//             resolve(millis);
+//         }, millis);
+//     });
+
+// }
+
+// /**
+//  * let t = Date.now()
+//  * sleep(100).then(() => console.log(Date.now() - t)) // 100
+//  */
+
+//  2634. Filter Elements from Array
+//  Easy
+//  Companies
+//  Hint
+//  Given an integer array arr and a filtering function fn, return a filtered array filteredArr.
+
+//  The fn function takes one or two arguments:
+
+//  arr[i] - number from the arr
+//  i - index of arr[i]
+//  filteredArr should only contain the elements from the arr for which the expression fn(arr[i], i) evaluates to a truthy value. A truthy value is a value where Boolean(value) returns true.
+
+//  Please solve it without the built-in Array.filter method.
+
+//  Example 1:
+
+//  Input: arr = [0,10,20,30], fn = function greaterThan10(n) { return n > 10; }
+//  Output: [20,30]
+//  Explanation:
+//  const newArray = filter(arr, fn); // [20, 30]
+//  The function filters out values that are not greater than 10
+//  Example 2:
+
+//  Input: arr = [1,2,3], fn = function firstIndex(n, i) { return i === 0; }
+//  Output: [1]
+//  Explanation:
+//  fn can also accept the index of each element
+//  In this case, the function removes elements not at index 0
+//  Example 3:
+
+//  Input: arr = [-2,-1,0,1,2], fn = function plusOne(n) { return n + 1 }
+//  Output: [-2,0,1,2]
+//  Explanation:
+//  Falsey values such as 0 should be filtered out
+
+//  Answer:
+//  /**
+//  * @param {number[]} arr
+//  * @param {Function} fn
+//  * @return {number[]}
+//  */
+// var filter = function(arr, fn) {
+//     let newArr= [];
+//     for (let i = 0; i < arr.length; ++i) {
+//         if(fn(arr[i],i)){
+//             newArr.push(arr[i]);
+//         }
+//     }
+//     return newArr;
+// };
